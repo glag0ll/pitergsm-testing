@@ -16,6 +16,7 @@ class Login_page(Base):
     username = "//input[contains(@class, 'form__input') and @name='username']"
     password = '//input[@type="password"]'
     enter_button = "//button[contains(@class, 'btn_cta')][@type='submit'][text()='Войти']"
+    main_word = "//h2[contains(@class, 'slider__title') and text()='Популярные товары']"
 
     # getters
     def get_profile_button(self):
@@ -32,6 +33,9 @@ class Login_page(Base):
 
     def get_enter_button(self):
         return WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.XPATH, self.enter_button)))
+
+    def get_main_word(self):
+        return WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.XPATH, self.main_word)))
 
     # actions
     def click_profile_button(self):
@@ -62,3 +66,4 @@ class Login_page(Base):
         self.input_username('glagol.job@mail.ru')
         self.input_password('Testuser123')
         self.click_enter_button()
+        self.assert_word(self.get_main_word(), 'Популярные товары')
