@@ -43,24 +43,24 @@ class Add_smartphone(Base):
     # actions
     def click_get_smartphones(self):
         self.get_smartphone_page().click()
-        print('click')
+        print('переходим на страницу смартфонов')
 
     def input_first_price(self, first_price):
         self.get_first_price().send_keys(Keys.CONTROL + 'a')
         self.get_first_price().send_keys(Keys.DELETE)
         self.get_first_price().send_keys(first_price)
-        print('added first price')
+        print('вставлена первая цена')
 
     def input_second_price(self, second_price):
         self.get_second_price().send_keys(Keys.CONTROL + 'a')
         self.get_second_price().send_keys(Keys.DELETE)
         self.get_second_price().send_keys(second_price)
-        print('added second price')
+        print('вставлена вторая цена')
         time.sleep(1)
 
     def click_all_smartphones(self):
         self.get_all_smartphones().click()
-        print('click')
+        print('клик по отсортированным смартфонам')
         time.sleep(1)
 
     def scroll_to_smartphone(self, smartphone):
@@ -70,11 +70,11 @@ class Add_smartphone(Base):
         smartphone = self.buying_smartphone()
         self.scroll_to_smartphone(smartphone)
         smartphone.click()
-        print('click')
+        print('кнопка добавления смартфона в корзину нажата')
 
     def click_continue(self):
         self.get_continue().click()
-        print('click')
+        print('кнопка "продолжить" нажата')
 
     def add_smartphone(self):
         self.get_current_url()
@@ -83,4 +83,6 @@ class Add_smartphone(Base):
         self.input_second_price('30000')
         self.click_all_smartphones()
         self.click_buying_smartphone()
+        time.sleep(1)
+        self.get_screen()
         self.click_continue()

@@ -35,30 +35,32 @@ class Cart_page(Base):
     # actions
     def click_place_order(self):
         self.get_place_order().click()
-        print('click')
+        print('кнопка перехода в корзину нажата')
 
     def click_proceed_to_order(self):
         self.get_proceed_to_order().click()
-        print('click')
+        print('кнопка оформления товара нажата')
 
     def input_full_name(self, full_name):
         self.get_full_name().send_keys(full_name)
-        print('input full_name')
+        print('вставлено ФИО')
 
     def input_phone(self, phone):
         self.get_phone().send_keys(phone)
-        print('input phone')
+        print('вставлен моб. телефон')
 
     def input_commentary(self, commentary):
         self.get_commentary().send_keys(commentary)
-        print('input commentary')
+        print('вставлен комментарий')
 
     def cart_checkout(self):
+        self.get_current_url()
         self.click_place_order()
         self.click_proceed_to_order()
         self.input_full_name('Иванов Иван Иванович')
         self.input_phone('+79000000000')
         self.input_commentary('клёвый сайт :)')
+        self.get_screen()
 
 
 

@@ -41,28 +41,25 @@ class Add_laptop(Base):
         self.get_first_price().send_keys(Keys.CONTROL + 'a')
         self.get_first_price().send_keys(Keys.DELETE)
         self.get_first_price().send_keys(first_price)
-        print('added first price')
+        print('вставлена первая цена')
 
     def input_second_price(self, second_price):
         self.get_second_price().send_keys(Keys.CONTROL + 'a')
         self.get_second_price().send_keys(Keys.DELETE)
         self.get_second_price().send_keys(second_price)
-        print('added second price')
-        time.sleep(1)
+        print('вставлена вторая цена')
 
     def click_get_laptops(self):
         self.get_laptops().click()
-        print('click')
-        time.sleep(1)
+        print('кнопка отсортированных ноутбуков')
 
     def click_buying_laptop(self):
         self.buying_laptop().click()
-        print('click')
-        time.sleep(1)
+        print('кнопка добавления ноутбука в корзину нажата')
 
     def click_continue(self):
         self.get_continue().click()
-        print('click')
+        print('кнопка "продолжить" нажата')
 
     def add_laptop(self):
         self.get_current_url()
@@ -70,4 +67,6 @@ class Add_laptop(Base):
         self.input_second_price('50000')
         self.click_get_laptops()
         self.click_buying_laptop()
+        time.sleep(1)
+        self.get_screen()
         self.click_continue()

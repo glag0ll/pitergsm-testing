@@ -1,3 +1,5 @@
+import time
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from  selenium.webdriver.support import expected_conditions as EC
@@ -39,23 +41,23 @@ class Login_page(Base):
     # actions
     def click_profile_button(self):
         self.get_profile_button().click()
-        print('click')
+        print('вход в аккаунт')
 
     def click_enter_with_pass(self):
         self.get_enter_pass().click()
-        print('click')
+        print('вход в аккаунт с паролем')
 
     def input_username(self, username):
         self.get_username().send_keys(username)
-        print('input username')
+        print('вставлен логин')
 
     def input_password(self, password):
         self.get_password().send_keys(password)
-        print('input username')
+        print('вставлен пароль')
 
     def click_enter_button(self):
         self.get_enter_button().click()
-        print('click')
+        print('кнопка входа в аккаунт нажата')
 
     # ending
     def authorization(self):
@@ -66,3 +68,5 @@ class Login_page(Base):
         self.input_password('Testuser123')
         self.click_enter_button()
         self.assert_word(self.get_main_word(), 'Популярные товары')
+        time.sleep(1)
+        self.get_screen()

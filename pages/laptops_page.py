@@ -25,11 +25,11 @@ class Laptops_page(Base):
 
     def point_menu(self):
         self.action.move_to_element(self.get_menu()).perform()
-        print('point on menu')
+        print('наводимся на меню')
 
     def click_all_laptops(self):
         self.get_all_laptops_button().click()
-        print("click 'все ноутбуки' button")
+        print("кнопка на категорию всех ноутбуков нажата")
 
     def open_laptops_category(self):
         self.get_current_url()
