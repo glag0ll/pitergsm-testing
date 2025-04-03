@@ -5,7 +5,8 @@
 ## Documentation
 
 1. Заходим в терминал 
-2. Прописываем команду git clone https://github.com/glag0ll/pitergsm-testing.git
+2. Прописываем команду:
+git clone https://github.com/glag0ll/pitergsm-testing.git
 3. Вы великолепны! Теперь данный проект находиться локально на вашем компьютере в директории, которую вы указали в терминале и можете делать с ним что угодно
 
 
