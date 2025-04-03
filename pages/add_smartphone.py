@@ -19,6 +19,7 @@ class Add_smartphone(Base):
     second_price = "//input[contains(@class, 'js_range_to') and contains(@class, 'filter-input__field--to') and @name='arrFilter_P1_MAX']"
     show_smartphones = "//button[contains(@class, 'btn_cta') and @for='show-filter' and normalize-space()='Показать товары']"
     buy_smartphone = "//button[contains(@class, 'buy_link') and @data-product-id='34189' and .//span[contains(@class, 'prodcard__btn-text') and normalize-space()='Купить']]"
+    continue_shopping = "//button[contains(@class, 'js_popup_close') and contains(@class, 'btn_outline') and normalize-space()='Продолжить покупки']"
 
     # getters
     def get_smartphone_page(self):
@@ -35,6 +36,9 @@ class Add_smartphone(Base):
 
     def buying_smartphone(self):
         return WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located((By.XPATH, self.buy_smartphone)))
+
+    def get_continue(self):
+        return WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located((By.XPATH, self.continue_shopping)))
 
     # actions
     def click_get_smartphones(self):
@@ -59,8 +63,17 @@ class Add_smartphone(Base):
         print('click')
         time.sleep(1)
 
+    def scroll_to_smartphone(self, smartphone):
+        self.driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", smartphone)
+
     def click_buying_smartphone(self):
-        self.buying_smartphone().click()
+        smartphone = self.buying_smartphone()
+        self.scroll_to_smartphone(smartphone)
+        smartphone.click()
+        print('click')
+
+    def click_continue(self):
+        self.get_continue().click()
         print('click')
 
     def add_smartphone(self):
@@ -70,3 +83,4 @@ class Add_smartphone(Base):
         self.input_second_price('30000')
         self.click_all_smartphones()
         self.click_buying_smartphone()
+        self.click_continue()

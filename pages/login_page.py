@@ -63,7 +63,7 @@ class Login_page(Base):
         self.get_current_url()
         self.click_profile_button()
         self.click_enter_with_pass()
-        self.input_username('glagol.job@mail.ru')
+        self.input_username('test_userr123@mail.ru')
         self.input_password('Testuser123')
         self.click_enter_button()
         self.assert_word(self.get_main_word(), 'Популярные товары')
