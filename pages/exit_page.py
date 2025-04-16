@@ -11,7 +11,7 @@ class Exit_page(Base):
 
     # locators
     place_order = "//a[contains(@class, 'cartplate__btn') and @href='/personal/cart/' and normalize-space()='Оформить']"
-    delete = "//a[contains(@class, 'amount__control_delete') and normalize-space()='Удалить']"
+    delete = '//*[@id="basket_container"]/div[2]/div[1]/div[1]/div[4]/a'
     exit = "//a[@href='/personal/profile/?logout=yes' and normalize-space()='Выйти']"
 
     # getters
@@ -42,11 +42,9 @@ class Exit_page(Base):
             delete_buttons = self.get_delete_buttons()
             if not delete_buttons:
                 break
-            # Всегда берем последнюю кнопку, чтобы избежать смещения
             button = delete_buttons[-1]
             try:
                 button.click()
-                # Ждем исчезновения элемента
                 WebDriverWait(self.driver, 10).until(EC.staleness_of(button))
                 print("товар удален")
             except Exception as e:

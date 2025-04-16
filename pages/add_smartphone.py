@@ -18,7 +18,7 @@ class Add_smartphone(Base):
     first_price = "//input[contains(@class, 'js_range_from') and contains(@class, 'filter-input__field--from') and @name='arrFilter_P1_MIN']"
     second_price = "//input[contains(@class, 'js_range_to') and contains(@class, 'filter-input__field--to') and @name='arrFilter_P1_MAX']"
     show_smartphones = "//button[contains(@class, 'btn_cta') and @for='show-filter' and normalize-space()='Показать товары']"
-    buy_smartphone = "//button[contains(@class, 'buy_link') and @data-product-id='34189' and .//span[contains(@class, 'prodcard__btn-text') and normalize-space()='Купить']]"
+    buy_smartphone = "//button[contains(@class, 'buy_link') and @data-product-id='55029' and .//span[contains(@class, 'prodcard__btn-text') and normalize-space()='Купить']]"
     continue_shopping = "//button[contains(@class, 'js_popup_close') and contains(@class, 'btn_outline') and normalize-space()='Продолжить покупки']"
 
     # getters
