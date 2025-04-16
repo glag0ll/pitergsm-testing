@@ -4,6 +4,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from  selenium.webdriver.support import expected_conditions as EC
 from base.base import Base
+from utilities.logger import Logger
 
 
 class Login_page(Base):
@@ -61,6 +62,7 @@ class Login_page(Base):
 
     # ending
     def authorization(self):
+        Logger.add_start_step(method='authorization')
         self.get_current_url()
         self.click_profile_button()
         self.click_enter_with_pass()
@@ -68,5 +70,6 @@ class Login_page(Base):
         self.input_password('Testuser123')
         self.click_enter_button()
         self.assert_word(self.get_main_word(), 'Популярные товары')
-        time.sleep(1)
+        Logger.add_end_step(url=self.driver.current_url, method='authorization')
+        time.sleep(2)
         self.get_screen()

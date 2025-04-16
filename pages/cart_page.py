@@ -2,6 +2,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from  selenium.webdriver.support import expected_conditions as EC
 from base.base import Base
+from utilities.logger import Logger
+
 
 class Cart_page(Base):
     def __init__(self, driver):
@@ -54,12 +56,14 @@ class Cart_page(Base):
         print('вставлен комментарий')
 
     def cart_checkout(self):
+        Logger.add_start_step(method='cart_checkout')
         self.get_current_url()
         self.click_place_order()
         self.click_proceed_to_order()
         self.input_full_name('Иванов Иван Иванович')
         self.input_phone('+79000000000')
         self.input_commentary('клёвый сайт :)')
+        Logger.add_end_step(url=self.driver.current_url, method='cart_checkout')
         self.get_screen()
 
 

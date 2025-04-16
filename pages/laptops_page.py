@@ -5,6 +5,8 @@ from  selenium.webdriver.support import expected_conditions as EC
 from base.base import Base
 from selenium.webdriver.common.action_chains import ActionChains
 
+from utilities.logger import Logger
+
 
 class Laptops_page(Base):
     def __init__(self, driver):
@@ -32,7 +34,8 @@ class Laptops_page(Base):
         print("кнопка на категорию всех ноутбуков нажата")
 
     def open_laptops_category(self):
+        Logger.add_start_step(method='open_laptops_category')
         self.get_current_url()
         self.point_menu()
         self.click_all_laptops()
-
+        Logger.add_end_step(url = self.driver.current_url, method='open_laptops_category')

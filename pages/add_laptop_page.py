@@ -5,6 +5,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from  selenium.webdriver.support import expected_conditions as EC
 from base.base import Base
+from utilities.logger import Logger
 
 
 class Add_laptop(Base):
@@ -62,6 +63,7 @@ class Add_laptop(Base):
         print('кнопка "продолжить" нажата')
 
     def add_laptop(self):
+        Logger.add_start_step(method='add_laptop')
         self.get_current_url()
         self.input_first_price('0')
         self.input_second_price('50000')
@@ -70,3 +72,4 @@ class Add_laptop(Base):
         time.sleep(1)
         self.get_screen()
         self.click_continue()
+        Logger.add_end_step(url=self.driver.current_url, method='add_smartphone')

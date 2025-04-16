@@ -3,6 +3,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from base.base import Base
+from utilities.logger import Logger
+
 
 class Exit_page(Base):
     def __init__(self, driver):
@@ -55,7 +57,9 @@ class Exit_page(Base):
         print("выход из аккаунта")
 
     def full_exit(self):
+        Logger.add_start_step(method='full_exit')
         self.get_current_url()
         self.click_place_order()
         self.click_delete()
         self.click_exit()
+        Logger.add_end_step(url=self.driver.current_url, method='full_exit')
